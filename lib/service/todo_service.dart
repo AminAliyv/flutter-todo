@@ -17,7 +17,7 @@ class TodoService {
     await isar.writeTxn(() => isar.todoModels.put(newTodo));
   }
 
-  //MELUMATLARI GETIRMEK
+
   Future<void> fetchTodos() async {
     currentTodos = await isar.todoModels
         .where()
@@ -31,7 +31,7 @@ class TodoService {
         await isar.todoModels.filter().complatedEqualTo(true).findAll();
   }
 
-  //GUNCELLEME
+
   Future<void> updateTodo(TodoModel todo) async {
     final existingTodo = await isar.todoModels.get(todo.id);
     if (existingTodo != null && existingTodo.complated == false) {
@@ -43,7 +43,7 @@ class TodoService {
     }
   }
 
-  //SILME
+
   Future<void> deleteTodos() async {
     await isar.writeTxn(() =>
         isar.todoModels.where().filter().complatedEqualTo(true).deleteAll());
